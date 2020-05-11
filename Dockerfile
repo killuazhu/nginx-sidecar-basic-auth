@@ -24,6 +24,7 @@ ENV NGINX_VERSION=1.12.2 \
 RUN wget -O dockerize.tar.gz https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
   && tar -C /usr/local/bin -xzvf dockerize.tar.gz \
   && apk add --update --no-cache --virtual entrypoint apache2-utils \
+  && apk upgrade libxml2 \
   && rm dockerize.tar.gz /etc/nginx/conf.d/default.conf /etc/nginx/nginx.conf \
   && mkdir /templates \
   && chmod g+rw /etc/nginx /etc/nginx/conf.d /templates
